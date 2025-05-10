@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JobApplication;
 use App\Models\JobListing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class JobApplicationController extends Controller
 {
@@ -21,6 +22,7 @@ class JobApplicationController extends Controller
      */
     public function create(Request $request)
     {
+        Log::info("Entering create() in JobApplicationController");
         $job = JobListing::where('id', $request->joblisting)->firstOrFail();
         return view('job-listings.apply', [
             'job' => $job
