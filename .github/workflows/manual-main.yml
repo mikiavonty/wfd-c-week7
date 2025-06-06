@@ -25,6 +25,8 @@ jobs:
     - name: 📂 Installing
       run: |
           ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "
+            source /home/wfdc/nodevenv/admin.wfdc.projects.petra.ac.id/14/bin/activate && \
+            cd /home/wfdc/admin.wfdc.projects.petra.ac.id && \
             cd ${{ secrets.TARGET_DIR }} &&
             unzip -o laravel-deploy.zip &&
             rm laravel-deploy.zip &&
