@@ -26,8 +26,8 @@ jobs:
       run: |
           ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "
             source /home/wfdc/nodevenv/admin.wfdc.projects.petra.ac.id/14/bin/activate && \
-            cd /home/wfdc/admin.wfdc.projects.petra.ac.id && \
-            cd ${{ secrets.TARGET_DIR }} &&
+            cd ${{ secrets.TARGET_DIR }} && \
+            export PATH=\"./node_modules/.bin:\$PATH\" && \
             unzip -o laravel-deploy.zip &&
             rm laravel-deploy.zip &&
             composer install && npm install &&
